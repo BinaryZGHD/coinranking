@@ -17,6 +17,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _counter = 0;
+
+  void onTabTapped(int index) {
+    setState(() {
+      _counter = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +45,7 @@ class _HomePageState extends State<HomePage> {
           ),
 
         ],
+
       )
 
 
@@ -56,12 +64,37 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('test coins', style: TextStyle(color: Color(0xFF8A8989), fontSize: 14,),),
+                  Text('test coins API CoinRanking', style: TextStyle(color: Color(0xFF8A8989), fontSize: 14,),),
                   SizedBox(height: 5,),
                   Text("Good Morning!", style: TextStyle(color: Color(0xFF333333), fontWeight: FontWeight.w500, fontSize: 18,)),
                 ],
               )
             ),
+
+              TextButton(
+
+                onPressed: () {},
+                child:  const Text('Login'),
+              ),
+              TextButton(
+
+                onPressed: () {},
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  // child: Image.asset('assets/Tom.png', width: 100.0, height: 100.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image:  AssetImage("assets/logo/profile.png"),
+
+                      // image: NetworkImage(food.urlImage),
+                    ),
+                  ),
+                ),
+              )
+
           ],
         ),
       );
@@ -89,10 +122,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 getFeature(),
+
               ]
           ),
         ),
+
       );
+
   }
 
   int selectedCollection = 0;
@@ -116,5 +152,52 @@ class _HomePageState extends State<HomePage> {
         ),
       );
   }
+  //
+  // getButtonBar() {
+  //   BottomNavigationBar(
+  //     currentIndex: _counter,
+  //     onTap: onTabTapped,
+  //     unselectedItemColor: Colors.blueGrey,
+  //     showUnselectedLabels: true,
+  //     fixedColor: Colors.black87,
+  //     items: const [
+  //       BottomNavigationBarItem(
+  //         icon: Icon(
+  //           Icons.home,
+  //           color: Colors.black,
+  //         ),
+  //         label: 'Home',
+  //       ),
+  //       BottomNavigationBarItem(
+  //         icon: Icon(
+  //           Icons.shopping_cart,
+  //           color: Colors.black,
+  //         ),
+  //         label: 'Cart',
+  //       ),
+  //
+  //       BottomNavigationBarItem(
+  //         icon: Icon(
+  //           Icons.camera_alt,
+  //           color: Colors.black,
+  //         ),
+  //         label: 'Camera',
+  //       ),BottomNavigationBarItem(
+  //         icon: Icon(
+  //           Icons.favorite,
+  //           color: Colors.black,
+  //         ),
+  //         label: 'Favorite',
+  //       ),
+  //       BottomNavigationBarItem(
+  //         icon: Icon(
+  //           Icons.settings,
+  //           color: Colors.black,
+  //         ),
+  //         label: 'Settings',
+  //       ),
+  //     ],
+  //   );
+  // }
+  }
 
-}

@@ -36,7 +36,7 @@ class Item_Coin extends StatelessWidget {
                     width: 15,
                 ),
                 Container(
-                  height: 10,
+                  height: 20,
                   width: 20,
                   child: Text(data["rank"].toString(), style: TextStyle(fontSize: 12, color: Color(0xFF8A8989)),)
                 ),
@@ -67,6 +67,14 @@ class Item_Coin extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
+                        data['symbol'],
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                        Text(
                           data['name'],
                           style: TextStyle(
                             fontSize: 10,
@@ -74,14 +82,7 @@ class Item_Coin extends StatelessWidget {
                             color: Colors.black,
                           ),
                         ),
-                        Text(
-                          data['symbol'],
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
+
                       ],
                     ),
                 ),

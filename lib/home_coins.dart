@@ -24,6 +24,14 @@ class  Home_Coins_Ful extends StatefulWidget {
 
 class _Home_Coins_Ful_State extends State<Home_Coins_Ful> {
 
+  int _counter = 0;
+
+  void onTabTapped(int index) {
+    setState(() {
+      _counter = index;
+    });
+  }
+
    GetCoinApi? _dataFromAPI;
   // late GetCoinApi _dataFromAPI;
 
@@ -111,6 +119,7 @@ class _Home_Coins_Ful_State extends State<Home_Coins_Ful> {
               ],
             );
           }),
+
     );
   }
 }
