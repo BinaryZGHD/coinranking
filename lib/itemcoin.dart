@@ -41,11 +41,12 @@ class Item_Coin extends StatelessWidget {
                   child: Text(data["rank"].toString(), style: TextStyle(fontSize: 12, color: Color(0xFF8A8989)),)
                 ),
                 Container(
+                  alignment: Alignment.center,
                   height: 50,
                   width: 50,
                   // child: Image.asset('assets/Tom.png', width: 100.0, height: 100.0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(50),
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(data['iconUrl']),
