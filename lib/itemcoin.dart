@@ -1,10 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-
-
 class Item_Coin extends StatelessWidget {
-  Item_Coin({ Key? key, required this.data, this.onTap}) : super(key: key);
+  Item_Coin({Key? key, required this.data, this.onTap}) : super(key: key);
   final data;
   final GestureTapCallback? onTap;
 
@@ -32,14 +29,16 @@ class Item_Coin extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                    height: 20,
-                    width: 15,
+                  height: 20,
+                  width: 15,
                 ),
                 Container(
-                  height: 20,
-                  width: 20,
-                  child: Text(data["rank"].toString(), style: TextStyle(fontSize: 12, color: Color(0xFF8A8989)),)
-                ),
+                    height: 20,
+                    width: 20,
+                    child: Text(
+                      data["rank"].toString(),
+                      style: TextStyle(fontSize: 12, color: Color(0xFF8A8989)),
+                    )),
                 Container(
                   alignment: Alignment.center,
                   height: 50,
@@ -56,18 +55,18 @@ class Item_Coin extends StatelessWidget {
                     ),
                   ),
                 ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                  ),
-                  Container(
-                    height: 60,
-                    width: 80,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
+                Container(
+                  height: 10,
+                  width: 10,
+                ),
+                Container(
+                  height: 60,
+                  width: 80,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
                         data['symbol'],
                         style: TextStyle(
                           fontSize: 15,
@@ -75,33 +74,54 @@ class Item_Coin extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-                        Text(
-                          data['name'],
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+                      Text(
+                        data['name'],
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
-
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(width: 20,),
+                SizedBox(
+                  width: 20,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-                    SizedBox(height: 5,),
-                    SizedBox(height: 5,),
-                    Text('price : ' + data["price"], style: TextStyle(fontSize: 10, color: Color(0xFF333333)),),
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'price : ' + data["price"],
+                      style: TextStyle(fontSize: 10, color: Color(0xFF333333)),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Row(
                       children: [
-                        Icon(Icons.schedule_rounded, color: Color(0xFF8A8989), size: 14,),
-                        SizedBox(width: 2,),
-                        Text('24h :'+ data["24hVolume"], style: TextStyle(fontSize: 12, color: Color(0xFF8A8989)),),
-                        SizedBox(width: 20,),
+                        Icon(
+                          Icons.schedule_rounded,
+                          color: Color(0xFF8A8989),
+                          size: 14,
+                        ),
+                        SizedBox(
+                          width: 2,
+                        ),
+                        Text(
+                          '24h :' + data["24hVolume"],
+                          style:
+                              TextStyle(fontSize: 12, color: Color(0xFF8A8989)),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
                         // Icon(Icons.star, color: Color(0xFFf5ba92), size: 14,),
                         // SizedBox(width: 2,),
                         // Text(data["rank"].toString(), style: TextStyle(fontSize: 12, color: Color(0xFF8A8989)),)
@@ -111,8 +131,7 @@ class Item_Coin extends StatelessWidget {
                 )
               ],
             ),
-          )
-      ),
+          )),
     );
   }
 }

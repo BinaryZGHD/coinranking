@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
-import 'home.dart';
+import 'package:flutter/rendering.dart';
 import 'home_coins.dart';
+import 'main_home.dart';
 
 void main() {
+  debugPaintSizeEnabled = true;
   runApp(const MyApp());
 }
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const Main_Home(),
+      // home: const Home_CoinsMyAppTest(),
     );
   }
 }
