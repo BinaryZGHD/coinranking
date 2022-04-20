@@ -29,7 +29,7 @@ class Box_Gragh_Ful extends StatefulWidget {
 }
 
 class _Box_Gragh_Ful_State extends State<Box_Gragh_Ful> {
-  // final RegExp exp = new RegExp(".svg");
+
   // int _counter = 0;
   // void onTabTapped(int index) {
   //   setState(() {
