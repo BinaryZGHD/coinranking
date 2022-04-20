@@ -1,3 +1,4 @@
+import 'package:coinranking/testimg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'home_coins.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Main_Home(),
+      home: const Home_Coins(),
       // home: const Home_CoinsMyAppTest(),
     );
   }

@@ -7,8 +7,6 @@ import 'package:intl/intl.dart';
 import 'GetApiCoinRanking/getcoinapi.dart';
 import 'GetApiCoinRanking/svgtopng.dart';
 
-
-
 class Main_Home extends StatelessWidget {
   const Main_Home({Key? key}) : super(key: key);
 
@@ -33,14 +31,12 @@ class _Main_Home_Ful_State extends State<Main_Home_Ful> {
   //     _counter = index;
   //   });
   // }
-  final String dogUrl = "https://www.svgrepo.com/show/2046/dog.svg";
 
   @override
   void initState() {
     super.initState();
     getAPICoins();
   }
-
 
   //GetCoinApi getCoinApiFromJson
   //GetToCoin getToCoinFromJson
@@ -61,16 +57,17 @@ class _Main_Home_Ful_State extends State<Main_Home_Ful> {
     // _dataFromAPI =
     //     getToCoinFromJson(response.body); // get the data from the api
 
-
-    print("เรียกใช้ Get_Coin_price");
+    // print("เรียกใช้ Get_Coin_price");
     var url = Uri.parse("https://api.coinranking.com/v2/coins?");
     var response = await http.get(url, headers: <String, String>{
       'x-access-token':
-      'coinrankinga098ff1270353e56c70cd5c7ab350b42627418b2ad36929c'
+          // 'coinrankinga098ff1270353e56c70cd5c7ab350b42627418b2ad36929c'
+            'coinrankingb02706b487db6a961a091c243825d4fe4cd9907b6221a4a8'
     });
 
+
     _dataFromAPI = getToCoinFromJson(response.body);
-    return  _dataFromAPI;
+    return _dataFromAPI;
 
     // if (response.statusCode == 200) {
     //   _dataFromAPI = getToCoinFromJson(response.body);
@@ -82,13 +79,11 @@ class _Main_Home_Ful_State extends State<Main_Home_Ful> {
     //   throw Exception('Failed to load CoinModel');
     // }
 
-
     //
     // log(response.body);
     // print(response.body);
     //
     // _dataFromAPI =(response.body) as CoinModel?; // get the data from the api
-
   }
 
   @override
@@ -96,14 +91,14 @@ class _Main_Home_Ful_State extends State<Main_Home_Ful> {
     return Scaffold(
       appBar: AppBar(
         title:
-        // Text(widget.changeTitle),
-        const Text("API CoinRanking 2 "),
+            // Text(widget.changeTitle),
+            const Text("API CoinRanking Coins"),
       ),
       backgroundColor: Colors.grey[200],
       body: FutureBuilder(
         future: getAPICoins(),
-        builder: (BuildContext context,AsyncSnapshot<dynamic> snapshot){
-          if(snapshot.connectionState == ConnectionState.done){
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
             var result = snapshot.data;
             return ListView.builder(
                 itemCount: _dataFromAPI?.data?.coins?.length ?? 0,
@@ -127,46 +122,14 @@ class _Main_Home_Ful_State extends State<Main_Home_Ful> {
                                       color: Colors.black, fontSize: 10),
                                 ),
                               ),
-
-                              // Padding(
-                              //   padding: const EdgeInsets.all(8.0),
-                              //   child:  SvgPicture.network("${_dataFromAPI?.data?.coins?.elementAt(index)?.iconUrl}",
-                              //     width: 50,
-                              //     height: 50,
-                              //   ),
-                              // ),
-                              // Container(
-                              //   height: 40,
-                              //   width: 40,
-                              //   // child: Image.asset('assets/Tom.png', width: 100.0, height: 100.0),
-                              //   decoration: BoxDecoration(
-                              //     borderRadius: BorderRadius.circular(100),
-                              //     image: DecorationImage(
-                              //       fit: BoxFit.cover,
-                              //
-                              //
-                              //       // image: SvgPicture.network('${_dataFromAPI?.data?.coins?.elementAt(index)?.iconUrl}' ,
-                              //       //   width: 50,
-                              //       //   height: 50,
-                              //       // ),
-                              //       image: NetworkImage("${_dataFromAPI?.data?.coins?.elementAt(index)?.iconUrl}"),
-                              //       // _dataFromAPI.data.coins[index].iconUrl),
-                              //       // image: AssetImage("assets/logo/btc.jpg"),
-                              //
-                              //
-                              //     ),
-                              //   ),
-                              // ),
                               Container(
                                 height: 50,
                                 width: 50,
-                                  child: SvgToPng(
-                                    svgto: "${_dataFromAPI?.data?.coins?.elementAt(index)?.iconUrl}",
-
-                                  ),
-                                  ),
-
-
+                                child: SvgToPng(
+                                  svgto:
+                                      "${_dataFromAPI?.data?.coins?.elementAt(index)?.iconUrl}",
+                                ),
+                              ),
                               Column(
                                 children: [
                                   Container(
@@ -184,7 +147,8 @@ class _Main_Home_Ful_State extends State<Main_Home_Ful> {
                                   Container(
                                     height: 15,
                                     width: 100,
-                                    margin: const EdgeInsets.symmetric(vertical: 5.0),
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 5.0),
                                     // alignment: const Alignment(0.0, 0.0),
                                     child: Text(
                                         " ${_dataFromAPI?.data?.coins?.elementAt(index)?.symbol} ",
@@ -195,36 +159,28 @@ class _Main_Home_Ful_State extends State<Main_Home_Ful> {
                                   ),
                                 ],
                               ),
+                              Container(
+                                height: 15,
+                                width: 100,
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 5.0),
+                                // alignment: const Alignment,
 
-                              // Container(
-                              //   height: 50,
-                              //   width: 50,
-                              //   margin: const EdgeInsets.symmetric(vertical: 10.0),
-                              //   alignment: const Alignment(0.0, 0.0),
-                              //   child: Text(
-                              //       "${_dataFromAPI?.data?.coins?.elementAt(index)?.name}",
-                              //       style: TextStyle(
-                              //           fontSize: 10,
-                              //           fontWeight: FontWeight.bold,
-                              //           color: Colors.black)),
-                              // ),
-                              //
-                              // Padding(
-                              //   padding: const EdgeInsets.all(8.0),
-                              //   child: Text(
-                              //     "${_dataFromAPI?.data?.coins?.elementAt(index)?.symbol}",
-                              //     style: const TextStyle(
-                              //         color: Colors.black, fontSize: 12),
-                              //   ),
-                              // ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  '${NumberFormat("#,###.######").format( double.parse("${_dataFromAPI?.data?.coins?.elementAt(index)?.price} ") ) } USD',
-                                  // "${_dataFromAPI?.data?.coins?.elementAt(index)?.price}",
-                                  style: const TextStyle(
-                                      color: Colors.black, fontSize: 12),
+                                child: Align(
+                                  alignment: Alignment.topRight,
+                                  child: Text(
+                                      '${NumberFormat("#,###.######").format(double.parse("${_dataFromAPI?.data?.coins?.elementAt(index)?.price} "))} USD',
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black)),
                                 ),
+                                // Text(
+                                //     '${NumberFormat("#,###.######").format(double.parse("${_dataFromAPI?.data?.coins?.elementAt(index)?.price} "))} USD',
+                                //     style: TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: FontWeight.bold,
+                                //         color: Colors.black)),
                               ),
                             ],
                           ),
