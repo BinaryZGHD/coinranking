@@ -1,13 +1,12 @@
 
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
-import 'GetApiCoinRanking/getapiapply.dart';
+
 import 'GetApiCoinRanking/getcoinapi.dart';
-
-import 'GetApiCoinRanking/svgtopng.dart';
 import 'ItemCard/cardMainHomeCoins.dart';
-
 
 class Home_Coins extends StatelessWidget {
   const Home_Coins({Key? key}) : super(key: key);
@@ -34,43 +33,45 @@ class _Home_Coins_Ful_State extends State<Home_Coins_Ful> {
   //   });
   // }
   GetToCoin? _dataFromAPI;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getAPICoins();
-  // }
-  //
+  @override
+  void initState() {
+    super.initState();
+    getAPICoins();
+  }
 
-  //
-  //
-  // Future<GetToCoin?> getAPICoins() async {
-  //   // print("เรียกใช้ Get_Coin_price");
-  //   var url = Uri.parse("https://api.coinranking.com/v2/coins?");
-  //   var response = await http.get(url, headers: <String, String>{
-  //     'x-access-token': 'coinrankingb02706b487db6a961a091c243825d4fe4cd9907b6221a4a8'
-  //   });
-  //
-  //   _dataFromAPI = getToCoinFromJson(response.body);// get the data from the api
-  //   return _dataFromAPI;
-  //
-  //   // log(response.body);
-  //   // print(response.body);
-  // }
+
+
+
+  Future<GetToCoin?> getAPICoins() async {
+    // print("เรียกใช้ Get_Coin_price");
+    var url = Uri.parse("https://api.coinranking.com/v2/coins?");
+    var response = await http.get(url, headers: <String, String>{
+      'x-access-token': 'coinrankingb02706b487db6a961a091c243825d4fe4cd9907b6221a4a8'
+    });
+    print(response.body);
+    _dataFromAPI = getToCoinFromJson(response.body);// get the data from the api
+    return _dataFromAPI;
+
+    // log(response.body);
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:
-        // Text(widget.changeTitle),
-        const Text("API CoinRanking Coins"),
-      ),
-      backgroundColor: Colors.grey[200],
+      // appBar: AppBar(
+      //   title:
+      //   // Text(widget.changeTitle),
+      //   const Text("API CoinRanking Coins"),
+      // ),
+      // backgroundColor: Colors.grey[200],
       body: FutureBuilder(
         future: getAPICoins(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             var result = snapshot.data;
+            print(result.data.coins[2].sparkline[1] );
+            print(  {result.data.coins[2].sparkline.length} );
             return ListView.builder(
                 itemCount: _dataFromAPI?.data?.coins?.length ?? 0,
                 // itemCount: 10,
@@ -80,7 +81,9 @@ class _Home_Coins_Ful_State extends State<Home_Coins_Ful> {
                    name: result.data.coins[index].name,
                    symbol: result.data.coins[index].symbol,
                    iconUrl: result.data.coins[index].iconUrl,
-                   price: result.data.coins[index].price );
+                   price: result.data.coins[index].price ,
+                   data_Count: ' ${result.data.coins[index].sparkline.length  }',
+                   data_sparkline:  " ${ result.data.coins[index].sparkline[1]} " );
                 });
           }
           return LinearProgressIndicator();

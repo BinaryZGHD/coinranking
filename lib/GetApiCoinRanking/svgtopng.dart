@@ -41,8 +41,7 @@ class _SvgToPngFState extends State<_SvgToPngF> {
           padding: const EdgeInsets.all(8.0),
           child: SvgPicture.network(
             "${widget.svgto}",
-            width: 50,
-            height: 50,
+
           ),
         ),
       );
@@ -52,8 +51,7 @@ class _SvgToPngFState extends State<_SvgToPngF> {
           padding: const EdgeInsets.all(8.0),
           child: Image.network(
             "${widget.svgto}",
-            width: 50,
-            height: 50,
+
           ),
         ),
       );
