@@ -5,8 +5,9 @@ import 'package:intl/intl.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 class SvgToPng extends StatelessWidget {
-  final String svgto ;
+  final String svgto;
   const SvgToPng({Key? key, required this.svgto}) : super(key: key);
 
   @override
@@ -14,12 +15,15 @@ class SvgToPng extends StatelessWidget {
     return _SvgToPngF(
       svgto: svgto,
     );
-
   }
 }
+
 class _SvgToPngF extends StatefulWidget {
-  const _SvgToPngF({Key? key, required this.svgto, }) : super(key: key);
-  final String svgto ;
+  const _SvgToPngF({
+    Key? key,
+    required this.svgto,
+  }) : super(key: key);
+  final String svgto;
   @override
   State<_SvgToPngF> createState() => _SvgToPngFState();
 }
@@ -27,23 +31,32 @@ class _SvgToPngF extends StatefulWidget {
 class _SvgToPngFState extends State<_SvgToPngF> {
   @override
   Widget build(BuildContext context) {
-
-    RegExp exp = RegExp(r'.svg' , caseSensitive: false);
+    RegExp exp = RegExp(r'.svg', caseSensitive: false);
     String str = "${widget.svgto}";
     Iterable<RegExpMatch> matches = exp.allMatches(str);
 
-
-    if(exp.hasMatch(str)){
+    if (exp.hasMatch(str)) {
       return Container(
-        child:  Padding(
+        child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child:  SvgPicture.network("${widget.svgto}",
+          child: SvgPicture.network(
+            "${widget.svgto}",
             width: 50,
             height: 50,
           ),
         ),
       );
-    }else{
+    } else {
+      return Container(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.network(
+            "${widget.svgto}",
+            width: 50,
+            height: 50,
+          ),
+        ),
+      );
       // return Container(
       //       height: 40,
       //       width: 40,
@@ -66,18 +79,7 @@ class _SvgToPngFState extends State<_SvgToPngF> {
       //         ),
       //       ),
       //     );
-      return Container(
-        child:  Padding(
-          padding: const EdgeInsets.all(8.0),
-          child:  Image.network("${widget.svgto}",
-            width: 50,
-            height: 50,
-          ),
-        ),
-      );
 
     }
-
-
   }
 }
