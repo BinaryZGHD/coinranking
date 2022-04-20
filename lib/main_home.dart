@@ -1,4 +1,6 @@
-
+import 'dart:convert';
+import 'dart:developer';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -87,7 +89,12 @@ class _Main_Home_Ful_State extends State<Main_Home_Ful> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        title:
+            // Text(widget.changeTitle),
+            const Text("API CoinRanking Coins"),
+      ),
+      backgroundColor: Colors.grey[200],
       body: FutureBuilder(
         future: getAPICoins(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
